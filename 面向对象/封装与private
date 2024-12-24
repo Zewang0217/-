@@ -1,0 +1,130 @@
+## 面向对象
+
+### 封装
+
++ 例子： 需求：人画圆，针对这个需求进行面向对象设计 —— 方法”画圆“应该在**园**的类里
+  上述例子可以解释为 “人” 调用 “圆” 的 “画圆” 这个方法进行画圆这个活动
+
++ 例子二： 人关门：人给门一个作用力，门就自己关了
+
+原则：**对象代表什么，就得封装对应的数据，并提供数据对应的行为** ———— 面向对象的理解
+
+可以去找对象的方法，不用再学或记
+
+### private私有
+
++ 权限修饰符
++ 可以修饰成员（变量和方法）
++ 被private修饰的成员只能在本类中才能访问，测试类中无法修改
++ 若想要被其他类使用，针对每个属性提供set，get等方法（public）
+
+为防止输入错误，加入if判断可否？
+
++ 不行
+
+  1.每次都判断不方便
+
+  2.不符合封装原则
+
+```java
+package com.heima.test;
+
+public class GirlFriend {
+	private int age;
+	private String name;
+	private String gender;
+	
+	//针对每一个私有的成员变量，都要提供set 和 get方法
+    //set 用于给成员变量进行赋值
+	//get 用于对外提供变量的量
+	//age:
+	public void setAge(int a) {
+		if (a >= 18 && a <= 50) {
+			age = a;
+		} else {
+			System.out.println("非法参数");
+		}
+	}
+
+	public int getAge() {
+		return age;
+	}
+	
+	//name:
+	public void setName(String n) {
+		name = n;
+	}
+	public String getName() {
+		return name;
+	}
+	
+	//gender:
+	public void setGender(String g) {
+		//string判断留待以后
+		gender = g;
+	}
+	public String getGender() {
+		return gender;
+	}
+	
+	public void sleep() {
+		System.out.println("在睡觉");
+	}
+	public void eat() {
+		System.out.println("在吃饭");
+	}
+
+}
+
+```
+
+```java
+package com.heima.test;
+
+public class GirlFriendTest {
+    public static void main(String[] args) {
+		//创建女朋友的对象
+    	GirlFriend gf1 = new GirlFriend();
+		gf1.setName("小小");
+		gf1.setGender("w");
+		gf1.setAge(-3);
+    	
+    	System.out.println(gf1.getName());
+    	System.out.println(gf1.getGender());
+    	System.out.println(gf1.getAge());
+    	
+    	gf1.sleep();
+    	gf1.eat();
+    	System.out.println("========================");
+    	
+    	GirlFriend gf2 = new GirlFriend();
+    	gf2.setName ("ChuQingHan");
+    	gf2.setGender("w");
+    	gf2.setAge( 23);
+    	
+    	System.out.println(gf2.getName());
+    	System.out.println(gf2.getGender());
+    	System.out.println(gf2.getAge());
+    	gf2.eat();
+    	gf2.sleep();
+    }	
+}
+
+/*输出：
+非法参数
+小小
+w
+0
+在睡觉
+在吃饭
+========================
+ChuQingHan
+w
+23
+在吃饭
+在睡觉
+
+*/
+//www.itheima.com
+
+```
