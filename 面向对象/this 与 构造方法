@@ -1,0 +1,93 @@
+### this
+
++ 成员变量与局部变量
+  + 方法中 ~ 局部
+  + class中 ~ 成员
++ 就近原则 ： 谁离得近就用谁
++ `this.age` 即为这类中的age
+
+```java
+this.name = name
+```
+
++ 作用：给成员变量name赋值
++ 局部变量表示测试类中调用方法传递过来的数据
++ 等号的左边：表示该成员位置的name
+
+### 构造方法（构造器、构造函数）
+
++ 作用：创建变量时初始化用的
++ 特点
+  + 方法名与类名相同，**大小写一致**
+  + **没有返回值类型，没有void**
+  + 没有具体返回值（**return 会报错**）
+
++ 执行时机：
+
+  1.创建对象时由**虚拟机自动调用**，不能手动调用构造方法
+
+  2.每创建一次对象，就会调用一次构造方法
+
+```java
+package com.heima.test;
+
+public class Student {
+	//属性
+	String name;
+	int age;
+	
+	//如果我们自己没有加任何一个构造方法
+	//那么虚拟机会给我们一个空参构造法
+	public Student() {
+		System.out.println("看看我执行了没？");
+	}
+	//有参构造
+	public Student(String name,int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public int getAge() {
+		return age;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+}
+//一个Java文件中可以定义多个class，且只能一个类是public修饰，而且public修饰的类名必须成为代码文件名
+//实际开发中建议还是一个文件定义一个class类
+//定义成员变量： 修饰符（暂时空） 数据类型 变量名称 = 初始化值（一般无需指定初始化值，存在默认值，默认值为0，0.0，false，null）
+
+```
+
+```java
+package com.heima.test;
+
+public class StudentTest {
+    public static void main(String[]args) {
+    	//创建对象
+    	//调用空参构造
+    	//Student s = new Student();
+    	
+    	Student s = new Student("张三",23);
+    	System.out.println(s.getName());
+    	System.out.println(s.getAge());
+    }
+}
+
+```
+
++ 有时候不知道属性值（键盘录入），可以用空参构造，在set赋值
++ 注意事项：
+  + 构造方法的重载
+  + 推荐：无论是否使用，都手动书写无参数构造方法，和带全部参数的构造方法
+  + 一旦自己写了有参构造，默认无参构造就没了，所以要自己手写
+
++ 无参采用默认值
