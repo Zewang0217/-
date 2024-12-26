@@ -1,0 +1,124 @@
+### Javabean 标准类
+
++ 成员变量用private修饰
++ 两个构造方法（空参、有参）
++ set，get，其他
+
+```java
+package com.heima.test;
+
+public class User {
+	//属性
+	private String username;
+	private String password;
+	private String email;
+	private String gender;
+	private int age;
+	
+	//空参构造
+	public User() {}
+	
+	//带全部参数的构造
+	public User(String username, String password, String email, String gender, int age) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.gender = gender;
+		this.age = age;
+	}
+	//get和set
+	//10个
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+	
+	//快捷键： alt + shift + s （get 和set）
+}
+```
+
+
+
+### 对象内存
+
++ Java内存分配介绍
+  + 栈
+    调用方法，FILO，变量
+  + 堆
+    new出来的东西，带有地址值
+  + 方法区
+    字节码文件加载时进入的内存
+
++ 对象内存图
+
+```java
+Student s = new Student();
+```
+
+  1、加载class文件
+
+  2、申明局部变量
+
+  3、在栈内存中开辟出一个空间
+
+  4、默认初始化
+
+  5、显示初始化
+
+  6、构造方法初始化
+
+  7、将栈内存中的地址赋值给左边的局部变量
+
+### 引用数据类型
+
++ 除四种基本数据类型的其他数据类型  例如 `int[] arr` `class` 
++ 数据值在其他空间，自己空间中存储的是地址值
+
+### this的内存原理
+
++ 本质： 代表方法调用者的地址值
++ 记录调用者的地址
+
+### souf
+
++ 两部分参数
+  + 要输出的内容%s
+  + 填充部分
+
+`System.out.printf("%s","x");`
+
